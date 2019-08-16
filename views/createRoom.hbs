@@ -1,0 +1,117 @@
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script
+    src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
+<link rel="stylesheet"
+    href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css">
+<script src="/js/createRoom.js"></script>
+<link rel="stylesheet" href="/css/room.css">
+
+<link rel="stylesheet" href="https://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
+{{!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> --}}
+<script src="https://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
+
+{{#if roomName}}
+<div class="alert alert-danger" style="margin: 53px 0px 0px 0px;">
+  Room name "{{this.roomName}}", already exists
+</div>
+{{/if}}
+<div class="container">
+    <form action="/create/createnewroom" method="POST">
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="panel panel-default" style="padding: 15px">
+                <div class="panel-heading clearfix">
+                    <i class="icon-calendar"></i>
+                    <h3 class="panel-title">Create a Room</h3>
+                </div>
+                <br>
+                <div class='input-group input-group-lg'>
+                    <div class="form-group">
+                        <div class='input-group'>
+                            <input type='text' class="form-control" placeholder="Room name" name="roomname" required="required"/>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class='input-group input-group-lg'>
+                    <div class="form-group">
+                        <div class='input-group'>
+                            <input type='text' class="form-control" placeholder="Room Description" name="description" required="required"/>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class='input-group input-group-lg'>
+                    <div class="form-group">
+                        <div class='input-group date' id='datetimepicker2'>
+                            <input type='text' class="form-control" placeholder="Date" name="date" required="required"/>
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class='input-group input-group-lg'>
+                    <div class="form-group">
+                        <div class='input-group date' id='datetimepicker3'>
+                            <input type='text' class="form-control" placeholder="Start time" name="starttime" required="required"/>
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-time"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class='input-group input-group-lg'>
+                    <div class="form-group">
+                        <div class='input-group date' id='datetimepicker4'>
+                            <input type='text' class="form-control" placeholder="End time" name="endtime" required="required"/>
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-time"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class='input-group input-group-lg'>
+                    <div class="form-group">
+                        <div class='input-group'>
+                            <input type='text' class="form-control" placeholder="Enter Student emails"
+                                data-role="tagsinput" name="studentemail" required="required"/>&nbsp;&nbsp;
+                            <input type='text' class="form-control" placeholder="Enter Teacher emails"
+                                data-role="tagsinput" name="teacheremail" />
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-heading clearfix">
+                    <i class="icon-calendar"></i>
+                    <h3 class="panel-title">Select files to upload</h3>
+                    {{#each uploadList}}
+                    <div class="checkbox checkbox-primary">
+                        <input id="checkbox2" type="checkbox" name="checkbox" value="{{this}}">
+                        <label for="checkbox2">
+                            {{this}}
+                        </label>
+                    </div>
+
+                    {{/each}}
+                    <div class="checkbox checkbox-primary" >
+                        <input type="hidden" name="checkbox" value="" >
+                    </div>
+                </div>
+                <br>
+                <div class='input-group input-group-lg'>
+                    <div class="form-group">
+                        <div class='input-group'>
+                            <input type='submit' value="Create Room" class="form-control"/>&nbsp;&nbsp;
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+</div>

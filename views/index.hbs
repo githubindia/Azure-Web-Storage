@@ -1,0 +1,47 @@
+<body {{#unless user}}style="background-image: url('image/home.jpg')";{{/unless}}>
+  
+
+
+<div class="jumbotron">
+  
+  {{#if user}}
+    <h4>Welcome {{ user.displayName }}!</h4>
+    <p>Use the navigation bar at the top of the page to get started.</p>
+    <div class="container">
+      <a href="/create" title="Button border blue/green" class="button btnBorder btnBlueGreen">Create room</a>
+    </div>
+  {{else}}
+    <h1>Tulane VR</h1>
+    <p class="lead">Explore new possibilities in an immersive world</p>
+    <a href="/auth/signin" class="btn btn-primary btn-large">Click here to sign in</a>
+  {{/if}}
+</div>
+{{#if user}}
+<h3>Room List</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Room Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Owner</th>
+      <th scope="col">Invitees</th>
+      <th scope="col">Date</th>
+      <th scope="col">Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each user.roomList}}
+      <tr>
+        <td>{{this.roomName}}</td>
+        <td>{{this.description}}</td>
+        <td>{{this.ownerName}}</td>
+        <td>{{this.participants}}</td>
+        <td>{{this.date}}</td>
+        <td>{{this.startTime}} - {{this.endTime}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+{{/if}}
+
+</body>
